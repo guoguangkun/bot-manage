@@ -193,10 +193,10 @@ const Bots = () => {
                 <DialogContent className="sm:max-w-[425px] h-px-[500px]">
                     <DialogHeader>
                         <DialogTitle>{
-                                actionType == "edit" ? "Edit Agent" : 'Create Agent'
+                                actionType == "edit" ? "Edit Agent" : "Create Agent"
                             }</DialogTitle>
                         <DialogDescription>
-                            Make changes to your Agent here. Click save when you're done.
+                            Make changes to your Agent here. Click save when you are done.
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
@@ -205,7 +205,7 @@ const Bots = () => {
                                 AgentName
                             </Label>
                             <Input id="AgentName" value={bot.AgentName}  onChange={(e)=> {
-                                saveChange(e.target.value, 'AgentName')
+                                saveChange(e.target.value, "AgentName")
                             }}  className="col-span-3" />
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">
