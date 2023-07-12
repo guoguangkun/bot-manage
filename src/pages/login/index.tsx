@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 
 import { useRouter } from "next/router"
 import { useContext} from "react";
-import MyContext from "../context";
+import MyContext from "../../lib/context";
 
 import {
     Card,
