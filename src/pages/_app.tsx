@@ -16,7 +16,10 @@ type AppPropsWithLayout = AppProps & {
     Component: NextPageWithLayout
 }
 export default function MyApp({ Component, pageProps } :  AppPropsWithLayout) {
-    let [user,setUser] = useState({})
+    let [user,setUser] = useState({
+        userName:"",
+        token:""
+    })
 
  
     return  <context.Provider value={{user,setUser}}>
