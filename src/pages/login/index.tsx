@@ -38,7 +38,7 @@ const Login = () => {
             <CardContent className="place-content-center" >
                 <img className="w-24 h-24 rounded-full mx-auto" src={"/static/user.png"} alt="" width="80" height="80" />
                 <div className="place-content-center w-full md:flex">
-                    <Button className="rounded-md text-white bg-blue-800" variant="outline" onClick={fakelogin} >Sign in with Google</Button>
+                    <Button className="rounded-md text-white bg-blue-800 border-blue-800" variant="outline" onClick={fakelogin} >Sign in with Google</Button>
                 </div>
             </CardContent>
         </Card>
