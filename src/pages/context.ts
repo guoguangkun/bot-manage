@@ -6,5 +6,5 @@ export default createContext({
         token: "",
         userName:""
     },
-    setUser:{}
+    setUser:(user:any)=> {}
 });
