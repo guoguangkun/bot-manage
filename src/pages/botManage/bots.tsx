@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Button } from "@/components/ui/button"
 import MyContext from "../../lib/context";
 
+
 import {
     Table,
     TableBody,
@@ -22,7 +23,7 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
+
 } from "@/components/ui/dialog"
 
 import {
@@ -48,22 +49,22 @@ interface bot {
 
 const botList: Array<bot> = [
     {
-        AgentName: "INV001",
-        botId: 1111,
+        AgentName: "Gopher001",
+        botId: 0o1,
         status: "Working",
         paymentMethod: "Credit Card",
         userId: "testName"
     },
     {
-        AgentName: "INV002",
-        botId: 1112,
+        AgentName: "Gopher002",
+        botId: 0o2,
         status: "Pending",
         paymentMethod: "PayPal",
         userId: "testName"
     },
     {
-        AgentName: "INV003",
-        botId: 1113,
+        AgentName: "Gopher003",
+        botId: 0o3,
         status: "Stoped",
         paymentMethod: "Bank Transfer",
         userId: "testName"
@@ -116,7 +117,8 @@ const Bots = () => {
     function creatNewAgent() {
         setBot({
             ...bots[bots.length -1],
-            botId: bots[bots.length -1].botId + 1
+            botId: bots.length + 1,
+            AgentName: 'Gopher00' + (bots.length + 1)
 
         })
         setShowDiag(true)
@@ -128,7 +130,11 @@ const Bots = () => {
             [type]: text
         })
     }
-
+    function setOpen() {
+        setShowDiag(false)
+        setActionType('create')
+    
+    }
     return <div className="w-full h-full bg-white flex flex-row">
         <div className="w-80 h-full border-r-2">
            
@@ -205,7 +211,9 @@ const Bots = () => {
             </Table>
             <Dialog open={
                 showDiag
-            }>
+            }
+            onOpenChange={setOpen}
+            >
                 <DialogContent className="sm:max-w-[425px] h-px-[500px]">
                     <DialogHeader>
                         <DialogTitle>{
@@ -214,7 +222,11 @@ const Bots = () => {
                         <DialogDescription>
                             Make changes to your Agent here. Click save when you are done.
                         </DialogDescription>
+                        
+
+                        
                     </DialogHeader> 
+                
                     <div className="grid gap-4 py-4">
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label htmlFor="AgentName" className="text-right">
@@ -255,7 +267,11 @@ const Bots = () => {
                     <DialogFooter>
                         <Button variant="outline" className='border-blue-800 bg-blue-800 text-white' onClick={()=> {
                             SaveBot()
-                        }}>Save changes</Button>
+                        }}> {
+
+                            actionType == "edit" ? "Save changes" : "Create New"
+
+                        } </Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
