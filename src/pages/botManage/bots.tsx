@@ -52,21 +52,21 @@ const botList: Array<bot> = [
         botId: 1111,
         status: "working",
         paymentMethod: "Credit Card",
-        userId: 'testName'
+        userId: "testName"
     },
     {
         AgentName: "INV002",
         botId: 1112,
         status: "Pending",
         paymentMethod: "PayPal",
-        userId: 'testName'
+        userId: "testName"
     },
     {
         AgentName: "INV003",
         botId: 1113,
         status: "stoped",
         paymentMethod: "Bank Transfer",
-        userId: 'testName'
+        userId: "testName"
     },
 ]
 
@@ -80,23 +80,23 @@ const Bots = () => {
     }, [router, user?.user])
 
     const [bots, setBots] = useState(botList) // botList
-    const [actionType, setActionType] = useState('create')
+    const [actionType, setActionType] = useState("create")
     const [bot, setBot] = useState({   // default bot
         AgentName: "",
         botId: 0,
         status: "",
         paymentMethod: "",
-        userId: ''
+        userId: ""
     })
     const [showDiag, setShowDiag] = useState(false) 
     function EditBot(Bot: bot) {
         setBot(Bot)
-        setActionType('edit')
+        setActionType("edit")
         setShowDiag(true)
     }
     function SaveBot() {
 
-        if(actionType == 'edit') {
+        if(actionType == "edit") {
             
             bots.map((agent,index)=> {
                 if( agent.botId == bot.botId ) {
@@ -110,7 +110,7 @@ const Bots = () => {
         setShowDiag(false)
 
         setTimeout(()=> {
-            setActionType('create')
+            setActionType("create")
         },10)
     }
     function creatNewAgent() {
@@ -130,9 +130,9 @@ const Bots = () => {
     }
 
     return <div className="w-full h-full bg-white flex flex-row">
-        <div className='w-80 h-full border-r-2'>
+        <div className="w-80 h-full border-r-2">
             {
-                user?.user?.userName ? <header className=''>
+                user?.user?.userName ? <header>
                     {
                         user?.user?.userName
                     }
@@ -141,7 +141,7 @@ const Bots = () => {
             <div>
                 Gopher AI
             </div>
-            <div className='flex flex-col'>
+            <div className="flex flex-col">
                 <Button variant="outline">
                     Agents
                 </Button>
@@ -150,9 +150,9 @@ const Bots = () => {
                 </Button>
             </div>
         </div>
-        <div className='px-16 w-max flex-1'>
-            <div className='flex flex-row-reverse'>
-                <Button onClick={()=> {
+        <div className="px-16 w-max flex-1">
+            <div className="flex flex-row-reverse">
+                <Button variant="outline" onClick={()=> {
                     creatNewAgent()
                 }}>
                     Create Agent
@@ -174,7 +174,9 @@ const Bots = () => {
                             <TableCell className="font-medium">{invoice.AgentName}</TableCell>
                             <TableCell>{invoice.status}</TableCell>
 
-                            <TableCell className="text-right"><Button onClick={
+                            <TableCell className="text-right">
+                                
+                                <Button variant="outline" onClick={
                                 () => {
                                     EditBot(invoice)
                                 }
@@ -213,7 +215,7 @@ const Bots = () => {
 
                             <Select onValueChange={(e)=> {
                                 console.log(e)
-                                saveChange(e, 'status')
+                                saveChange(e, "status")
                             }}
                             >
                                 <SelectTrigger className="w-[180px]">
@@ -235,7 +237,7 @@ const Bots = () => {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button onClick={()=> {
+                        <Button variant="outline" onClick={()=> {
                             SaveBot()
                         }}>Save changes</Button>
                     </DialogFooter>
